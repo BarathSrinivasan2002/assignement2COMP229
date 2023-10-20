@@ -24,16 +24,15 @@ db.once('open', () => {
 
 // Define your routes and API endpoints here
 
-const port = process.env.PORT || 2000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
 
-const productController = require('./controllers/productController');
+const productRoutes = require('./routes/productRoutes');
+app.use('/api/products', productRoutes);
 
-// Create a new product
-app.post('/products', productController.createProduct);
 
-// Get all products
-app.get('/products', productController.getAllProducts);
+
+
